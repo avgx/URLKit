@@ -9,16 +9,24 @@ extension URL {
         }
         return nil
     }
-
+    
     public func user() -> String? {
         URLComponents(string: absoluteString)?.user
     }
-
+    
     public func password() -> String? {
         URLComponents(string: absoluteString)?.password
     }
-
+    
     public func port() -> Int? {
         URLComponents(string: absoluteString)?.port
+    }
+    
+    public func queryItems() -> [String: String?]? {
+        guard let components = URLComponents.init(url: self, resolvingAgainstBaseURL: false),
+              let items = components.queryItems
+        else { return nil }
+        
+        return items.reduce(into: [:], { res, next in res[next.name] = next.value })
     }
 }
