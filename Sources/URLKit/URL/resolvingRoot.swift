@@ -47,6 +47,7 @@ public extension URL {
 }
 
 extension URL {
+    @available(*, deprecated, renamed: "resolvingRoot(_:)", message: "Use resolvingRoot(_:) instead")
     public static func from2SlashString(scheme: String?, s: String?) -> URL? {
         guard let raw = s?.trimmingCharacters(in: .whitespacesAndNewlines),
               !raw.isEmpty,
