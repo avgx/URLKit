@@ -15,4 +15,10 @@ extension URL {
         components.port = nil
         return components.url!
     }
+    
+    public func removingFragment() -> URL {
+        var components = URLComponents(string: absoluteString)!
+        components.fragment = nil
+        return components.url!
+    }
 }

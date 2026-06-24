@@ -10,3 +10,9 @@ import Testing
     #expect(stripped.port == nil)
     #expect(stripped.host == "host")
 }
+
+@Test func removingFragment() {
+    let url = URL(string: "https://u:p@host:444/p#Demo")!
+    let stripped = url.removingFragment()
+    #expect(stripped.fragment == nil)
+}
